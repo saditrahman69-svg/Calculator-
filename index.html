@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Calculator</title>
+
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #222;
+  font-family: Arial;
+}
+
+.calculator {
+  background: #333;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#display {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: right;
+  padding: 5px;
+}
+
+button {
+  width: 60px;
+  height: 50px;
+  margin: 5px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.operator {
+  background: orange;
+}
+
+.equal {
+  background: green;
+  width: 130px;
+}
+
+.clear {
+  background: red;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="calculator">
+  <input type="text" id="display" disabled>
+
+  <br>
+
+  <button onclick="clearDisplay()" class="clear">C</button>
+  <button onclick="appendValue('/')">/</button>
+  <button onclick="appendValue('*')">*</button>
+  <button onclick="appendValue('-')">-</button>
+
+  <br>
+
+  <button onclick="appendValue('7')">7</button>
+  <button onclick="appendValue('8')">8</button>
+  <button onclick="appendValue('9')">9</button>
+  <button onclick="appendValue('+')" class="operator">+</button>
+
+  <br>
+
+  <button onclick="appendValue('4')">4</button>
+  <button onclick="appendValue('5')">5</button>
+  <button onclick="appendValue('6')">6</button>
+
+  <br>
+
+  <button onclick="appendValue('1')">1</button>
+  <button onclick="appendValue('2')">2</button>
+  <button onclick="appendValue('3')">3</button>
+
+  <br>
+
+  <button onclick="appendValue('0')">0</button>
+  <button onclick="appendValue('.')">.</button>
+  <button onclick="calculate()" class="equal">=</button>
+</div>
+
+<script>
+function appendValue(value) {
+  document.getElementById("display").value += value;
+}
+
+function clearDisplay() {
+  document.getElementById("display").value = "";
+}
+
+function calculate() {
+  try {
+    document.getElementById("display").value =
+      eval(document.getElementById("display").value);
+  } catch {
+    alert("Invalid!");
+  }
+}
+</script>
+
+</body>
+</html>
